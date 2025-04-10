@@ -104,7 +104,7 @@ Results saved to network_scan_results.csv
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/network-scanner/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/AkshayRane05/Network-Scanner/issues).
 
 ## Disclaimer
 
