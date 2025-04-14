@@ -2,6 +2,7 @@ import ipaddress
 import time
 import socket
 from tabulate import tabulate
+import csv
 from scapy.all import ARP, Ether, srp
 import signal
 import sys
@@ -38,6 +39,22 @@ def arp_scan(ip):
             hostname = get_hostname(ip)
             return (ip_addr, mac_addr, hostname)
     return None
+
+
+def export_to_csv(data, filename):
+    try:
+        with open(filename, 'w', newline="") as csvfile:
+            csv_writer = csv.writer(csvfile)
+            # write header
+            csv_writer.writerow(['IP Address', 'MAC Address', 'Hostname'])
+            # write data
+            for device in data:
+                csv_writer.writerow(device)
+        return True
+
+    except Exception as e:
+        print(f"Error exporting to CSV: {e}")
+        return False
 
 
 def main():
@@ -93,6 +110,17 @@ def main():
 
             print("\nDiscovered Devices:")
             print(tabulate(table_data, headers=headers, tablefmt="grid"))
+
+            export_option = input("\nExport Results to CSV? (y/n): ")
+            if export_option.lower() == 'y':
+                default_filename = f"network_scan_{cidr.replace('/', '_')}_{time.strftime('%Y%m%d_%H%M%S')}.csv"
+                filename = input(
+                    f"Enter filename (default: {default_filename}): ") or default_filename
+
+                if export_to_csv(discovered_devices, filename):
+                    print(f"Results successfully exported to {filename}")
+                else:
+                    print("Failed to export results.")
         else:
             print("\nNo devices Found.")
 
