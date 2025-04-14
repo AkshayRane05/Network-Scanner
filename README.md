@@ -1,5 +1,9 @@
 # Network Scanner
 
+# <img src="https://github.com/secdev/scapy/raw/master/doc/scapy/graphics/scapy_logo.png" width="64" valign="middle" alt="Scapy" />&nbsp;&nbsp; Scapy
+![GitHub](https://img.shields.io/github/license/AkshayRane05/Network-Scanner)
+![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
+
 A multi-threaded network scanner that discovers active devices on a local network using ARP requests, resolves hostnames, and displays results in a tabular format.
 
 ## Features
